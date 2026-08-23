@@ -3,167 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tesla Membership Card Registration</title>
+
+<title>Membership Card Registration</title>
+
 <style>
-  :root {
-    --primary-red: #cc0000;
-    --dark-red: #5a0000;
-    --dark-navy: #0b132b;
-    --gold: #d4af37;
-    --bg-gray: #f4f5f7;
-    --text-dark: #1f2937;
-  }
+:root {
+  --primary-red: #cc0000;
+  --dark-red: #5a0000;
+  --dark-navy: #0b132b;
+  --gold: #d4af37;
+  --bg-gray: #f4f5f7;
+  --text-dark: #1f2937;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, Helvetica, sans-serif; background-color: var(--bg-gray); color: var(--text-dark); }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  /* Hero Section with Floating Tesla Logos */
-  .hero {
-    background: radial-gradient(circle at center, #800000 0%, var(--dark-red) 70%, #200000 100%);
-    color: white; padding: 50px 20px 40px; text-align: center;
-    border-bottom: 5px solid var(--gold);
-    position: relative;
-    overflow: hidden;
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-gray);
+  color: var(--text-dark);
+}
 
-  /* Main Badge Logo */
-  .logo-badge {
-    width: 100px; height: 100px; border-radius: 50%; background: white;
-    border: 3px solid var(--gold); display: inline-flex; align-items: center;
-    justify-content: center; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    position: relative; z-index: 2;
-  }
 
-  .logo-badge img {
-    width: 60px; height: 60px; object-fit: contain;
-  }
+/* Header */
+.hero {
+  background: radial-gradient(circle at center, #800000 0%, var(--dark-red) 70%, #200000 100%);
+  color: white;
+  padding: 50px 20px 40px;
+  text-align: center;
+  border-bottom: 5px solid var(--gold);
+}
 
-  /* Decorative Floating Tesla Logos */
-  .floating-logo {
-    position: absolute;
-    opacity: 0.85;
-    z-index: 1;
-    pointer-events: none;
-  }
 
-  .logo-left-1 { top: 35%; left: 8%; width: 40px; transform: rotate(-20deg); }
-  .logo-left-2 { bottom: 15%; left: 5%; width: 55px; transform: rotate(15deg); filter: brightness(0) invert(1); }
-  .logo-right-1 { top: 30%; right: 18%; width: 35px; transform: rotate(15deg); }
-  .logo-right-2 { top: 32%; right: 5%; width: 50px; transform: rotate(-10deg); filter: brightness(0) invert(1); }
-  .logo-right-3 { bottom: 15%; right: 8%; width: 45px; transform: rotate(25deg); }
+.logo-badge {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
 
-  h1 { 
-    font-size: 34px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; 
-    margin-bottom: 15px; position: relative; z-index: 2; line-height: 1.2;
-  }
 
-  .tagline {
-    display: inline-block; background: var(--dark-navy); color: white;
-    padding: 8px 22px; border-radius: 25px; font-size: 13px; font-weight: 700;
-    position: relative; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .tagline span { color: var(--gold); }
+.logo-badge span {
+  font-size: 45px;
+  color: var(--primary-red);
+  font-weight: bold;
+}
 
-  .partner-text {
-    margin-top: 18px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; opacity: 0.9; position: relative; z-index: 2;
-  }
 
-  /* Form Container */
-  .container {
-    max-width: 650px; margin: -20px auto 40px; background: white;
-    border-radius: 16px; padding: 35px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    position: relative; z-index: 3;
-  }
+h1 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
 
-  .form-title { text-align: center; color: var(--primary-red); font-size: 24px; margin-bottom: 8px; }
-  .form-subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
 
-  .form-group { margin-bottom: 20px; }
-  label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--dark-navy); font-size: 14px; }
+.tagline {
+  display: inline-block;
+  background: var(--dark-navy);
+  color: white;
+  padding: 8px 22px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
 
-  input[type="text"], input[type="email"], input[type="tel"], textarea {
-    width: 100%; padding: 12px 15px; border: 1.5px solid #ccc; border-radius: 8px; font-size: 15px;
-  }
 
-  input:focus, textarea:focus { outline: none; border-color: var(--primary-red); }
+.tagline span {
+  color: var(--gold);
+}
 
-  .btn-submit {
-    width: 100%; background: linear-gradient(135deg, #e60000, var(--primary-red));
-    color: white; border: 2px solid var(--gold); padding: 16px; font-size: 18px;
-    font-weight: 700; border-radius: 30px; cursor: pointer; text-transform: uppercase;
-    margin-top: 15px; box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4); transition: transform 0.2s;
-  }
 
-  .btn-submit:hover { transform: translateY(-2px); }
+.partner-text {
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
 
-  footer {
-    background: var(--dark-navy); color: white; text-align: center;
-    padding: 20px; font-size: 13px; border-top: 3px solid var(--gold);
-  }
-  footer span { color: var(--gold); }
 
-  @media(max-width: 600px) {
-    h1 { font-size: 24px; }
-    .container { margin: 10px; padding: 25px 18px; }
-    .floating-logo { display: none; } /* Hide floating logos on tiny screens for clarity */
-  }
+/* Form Container */
+.container {
+  max-width: 650px;
+  margin: -20px auto 40px;
+  background: white;
+  border-radius: 16px;
+  padding: 35px 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+.form-title {
+  text-align: center;
+  color: var(--primary-red);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+
+.form-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--dark-navy);
+  font-size: 14px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+
+.btn-submit {
+
+  width: 100%;
+  background: linear-gradient(135deg,#e60000,var(--primary-red));
+  color: white;
+  border: 2px solid var(--gold);
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+
+.privacy {
+  font-size: 12px;
+  color: #666;
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+footer {
+  background: var(--dark-navy);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  border-top: 3px solid var(--gold);
+}
+
+
+footer span {
+  color: var(--gold);
+}
+
+
+@media(max-width:600px){
+
+h1 {
+ font-size:24px;
+}
+
+.container {
+ margin:10px;
+ padding:25px 18px;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
 <header class="hero">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="floating-logo logo-left-1" alt="Tesla Logo">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="floating-logo logo-left-2" alt="Tesla Logo">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="floating-logo logo-right-1" alt="Tesla Logo">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="floating-logo logo-right-2" alt="Tesla Logo">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="floating-logo logo-right-3" alt="Tesla Logo">
 
-  <div class="logo-badge">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" alt="Tesla Logo">
-  </div>
+<div class="logo-badge">
+<span>★</span>
+</div>
 
-  <h1>MEMBERSHIP CARD<br>REGISTRATION</h1>
-  
-  <div class="tagline">BECOME A MEMBER. BE PART OF <span>SOMETHING GREAT!</span></div>
-  
-  <div class="partner-text">OFFICIAL TESLA REGISTRATION PARTNER</div>
-</header>
+<h1>
+MEMBERSHIP CARD<br>
+REGISTRATION
+</h1>
 
-<main class="container">
-  <h2 class="form-title">REGISTER TODAY</h2>
-  <p class="form-subtitle">Join our community and enjoy exclusive benefits, privileges, and opportunities.</p>
+<div class="tagline">
+BECOME A MEMBER. BE PART OF <span>SOMETHING GREAT!</span>
+</div>
+
+<div class="partner-text">
+WELCOME TO OUR MEMBERSHIP COMMUNITY
+</div>
+
+</header> 
+  <main class="container">
+
+<h2 class="form-title">REGISTER TODAY</h2>
+
+<p class="form-subtitle">
+Join our community and enjoy exclusive benefits, privileges, and opportunities.
+</p>
+
 
 <form action="https://formspree.io/f/mzepwqrp" method="POST">
-  
 
-    <div class="form-group">
-      <label for="fullname">Full Name *</label>
-      <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
-    </div>
 
-    <div class="form-group">
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-    </div>
+<div class="form-group">
 
-    <div class="form-group">
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900" required>
-    </div>
+<label for="fullname">Full Name *</label>
 
-    <div class="form-group">
-      <label for="address">Address</label>
-      <textarea id="address" name="address" rows="3" placeholder="Enter your full address"></textarea>
-    </div>
+<input 
+type="text" 
+id="fullname" 
+name="fullname" 
+placeholder="Enter your full name" 
+required>
 
-    <button type="submit" class="btn-submit">Start Registration</button>
-  </form>
+</div>
+
+
+
+<div class="form-group">
+
+<label for="email">Email Address *</label>
+
+<input 
+type="email" 
+id="email" 
+name="email" 
+placeholder="example@mail.com" 
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="phone">Phone Number *</label>
+
+<input 
+type="tel" 
+id="phone" 
+name="phone" 
+placeholder="+1 234 567 8900" 
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label for="address">Address</label>
+
+<textarea 
+id="address" 
+name="address" 
+rows="3" 
+placeholder="Enter your full address">
+</textarea>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label style="font-weight:normal;">
+
+<input 
+type="checkbox" 
+name="agreement" 
+required>
+
+I agree that my information can be used only for membership registration purposes.
+
+</label>
+
+</div>
+
+
+
+<p class="privacy">
+
+Your information is collected only for membership registration.
+We do not sell, rent, or share your personal information with third parties.
+</p>
+
+
+
+<button type="submit" class="btn-submit">
+
+Start Registration
+
+</button>
+
+
+</form>
+
 </main>
 
+
+
 <footer>
-  🔒 <span>YOUR TRUST. OUR PRIORITY.</span> | Secure registration powered by trusted technology.
+
+🔒 <span>YOUR TRUST. OUR PRIORITY.</span> | Secure membership registration.
+
 </footer>
 
+
 </body>
+
 </html>
